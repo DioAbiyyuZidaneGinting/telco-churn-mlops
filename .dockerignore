@@ -1,0 +1,37 @@
+# Git
+.git
+.gitignore
+
+# GitHub Actions
+.github/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# MLflow local runs (tidak diperlukan di image)
+mlruns/
+mlartifacts/
+
+# Jupyter
+*.ipynb
+.ipynb_checkpoints/
+
+# Data files besar (model diambil dari Registry, bukan dari filesystem)
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -61,20 +61,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: "8. Build Docker image with MLflow"
-        env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
-          MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
-          MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
+      - name: "8. Build Docker image (Python 3.12)"
         run: |
-          mlflow models build-docker \
-            --model-uri "models:/telco-churn-rf-mlproject/latest" \
-            --name ${{ env.DOCKER_IMAGE }}
+          docker build \
+            --build-arg MODEL_URI="models:/telco-churn-rf-mlproject/latest" \
+            -t ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }} \
+            -t ${{ env.DOCKER_IMAGE }}:latest \
+            .
 
       - name: "9. Push Docker image to Docker Hub"
         run: |
-          docker tag ${{ env.DOCKER_IMAGE }} ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
-          docker tag ${{ env.DOCKER_IMAGE }} ${{ env.DOCKER_IMAGE }}:latest
           docker push ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
           docker push ${{ env.DOCKER_IMAGE }}:latest
           echo "✅ Image pushed: ${{ env.DOCKER_IMAGE }}:latest"
