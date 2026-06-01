@@ -1,0 +1,23 @@
+artifact_path: file:D:/ProyekAkhir/mlruns/1/models/m-b589752c43eb4caea8aa3f245e3dfef3/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.13.0
+model_id: m-b589752c43eb4caea8aa3f245e3dfef3
+model_size_bytes: 4734757
+model_uuid: m-b589752c43eb4caea8aa3f245e3dfef3
+prompts: null
+run_id: e34aa7a194ac477386a5ab81fdb235e6
+utc_time_created: '2026-06-01 14:57:38.185093'

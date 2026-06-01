@@ -1,0 +1,32 @@
+2026-06-01 21:57:34 | INFO | *******************************************************
+2026-06-01 21:57:34 | INFO |   MEMULAI MODELLING — modelling.py
+2026-06-01 21:57:34 | INFO | *******************************************************
+2026-06-01 21:57:34 | INFO | Loading data: telco_churn_preprocessed.csv
+2026-06-01 21:57:34 | INFO |   Shape: (7043, 37) | Target dist:
+Churn
+0    5174
+1    1869
+2026-06-01 21:57:34 | INFO |   Train: 5634 | Test: 1409
+2026-06-01 21:57:37 | INFO | MLflow Run ID: e34aa7a194ac477386a5ab81fdb235e6
+2026-06-01 21:57:37 | INFO | Training RandomForest | params: {'n_estimators': 100, 'max_depth': 10, 'min_samples_split': 5, 'class_weight': 'balanced', 'random_state': 42, 'n_jobs': -1}
+2026-06-01 21:57:37 | INFO |   Training complete.
+2026-06-01 21:57:37 | INFO | === Evaluation ===
+2026-06-01 21:57:37 | INFO |   accuracy: 0.7764
+2026-06-01 21:57:37 | INFO |   precision: 0.5596
+2026-06-01 21:57:37 | INFO |   recall: 0.7406
+2026-06-01 21:57:37 | INFO |   f1_score: 0.6375
+2026-06-01 21:57:37 | INFO |   roc_auc: 0.8429
+2026-06-01 21:57:37 | INFO | 
+              precision    recall  f1-score   support
+
+    No Churn       0.89      0.79      0.84      1035
+       Churn       0.56      0.74      0.64       374
+
+    accuracy                           0.78      1409
+   macro avg       0.73      0.77      0.74      1409
+weighted avg       0.81      0.78      0.79      1409
+
+2026-06-01 21:57:47 | INFO | Model logged to MLflow: telco-churn-classification/random-forest-baseline
+2026-06-01 21:57:47 | INFO | *******************************************************
+2026-06-01 21:57:47 | INFO |   MODELLING SELESAI
+2026-06-01 21:57:47 | INFO | *******************************************************

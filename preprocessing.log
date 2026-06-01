@@ -1,0 +1,78 @@
+2026-06-01 21:50:00 | INFO | ************************************************************
+2026-06-01 21:50:00 | INFO |   MEMULAI PIPELINE PREPROCESSING — automate_dio.py
+2026-06-01 21:50:00 | INFO | ************************************************************
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 1 — DATA LOADING
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | Membaca file: WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-06-01 21:50:00 | INFO | Dataset berhasil dimuat.
+2026-06-01 21:50:00 | INFO |   Shape         : (7043, 21)
+2026-06-01 21:50:00 | INFO |   Jumlah kolom  : 21
+2026-06-01 21:50:00 | INFO |   Jumlah baris  : 7043
+2026-06-01 21:50:00 | INFO |   Kolom         : ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 2 — MISSING VALUE ANALYSIS
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | Konversi TotalCharges: str → float64
+2026-06-01 21:50:00 | INFO | Missing values terdeteksi pada 1 kolom:
+2026-06-01 21:50:00 | INFO |   TotalCharges: 11 nilai hilang (0.16%)
+2026-06-01 21:50:00 | INFO |   → Imputasi 'TotalCharges' dengan median = 1397.4750
+2026-06-01 21:50:00 | INFO | Total missing values tersisa: 11
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 3 — DUPLICATE ANALYSIS
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | Jumlah baris duplikat ditemukan: 0
+2026-06-01 21:50:00 | INFO | Tidak ada duplikat. Dataset tetap bersih.
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 4 — OUTLIER ANALYSIS (IQR Capping)
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO |   tenure: 0 outlier | batas bawah=-60.00, batas atas=124.00
+2026-06-01 21:50:00 | INFO |     → Setelah capping: 0 outlier tersisa
+2026-06-01 21:50:00 | INFO |   MonthlyCharges: 0 outlier | batas bawah=-46.02, batas atas=171.38
+2026-06-01 21:50:00 | INFO |     → Setelah capping: 0 outlier tersisa
+2026-06-01 21:50:00 | INFO |   TotalCharges: 0 outlier | batas bawah=-4688.48, batas atas=8884.67
+2026-06-01 21:50:00 | INFO |     → Setelah capping: 0 outlier tersisa
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 5 — FEATURE ENGINEERING
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO |   [+] AvgMonthlyCharge = TotalCharges / (tenure + 1)
+2026-06-01 21:50:00 | INFO |   [+] NumServices = jumlah layanan yang aktif digunakan
+2026-06-01 21:50:00 | INFO |   [+] HasFamily = 1 jika memiliki Partner atau Dependents
+2026-06-01 21:50:00 | INFO |   [+] TenureGroup = segmen tenure dalam kategori bulan
+2026-06-01 21:50:00 | INFO |   Distribusi TenureGroup:
+TenureGroup
+49-72m    2239
+0-12m     2175
+25-48m    1594
+13-24m    1024
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 6 — ENCODING
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO |   Kolom 'customerID' dihapus (bukan fitur prediktif).
+2026-06-01 21:50:00 | INFO |   Target 'Churn': Yes→1, No→0
+2026-06-01 21:50:00 | INFO |   LabelEncoder → 'gender'
+2026-06-01 21:50:00 | INFO |   LabelEncoder → 'Partner'
+2026-06-01 21:50:00 | INFO |   LabelEncoder → 'Dependents'
+2026-06-01 21:50:00 | INFO |   LabelEncoder → 'PhoneService'
+2026-06-01 21:50:00 | INFO |   LabelEncoder → 'PaperlessBilling'
+2026-06-01 21:50:00 | INFO |   OneHotEncoding → 11 kolom menghasilkan 24 kolom baru.
+2026-06-01 21:50:00 | INFO |   Konversi bool→int pada 24 kolom.
+2026-06-01 21:50:00 | INFO |   Shape setelah encoding: (7043, 37)
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 7 — SCALING (StandardScaler)
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO |   tenure: mean=-0.0000, std=1.0001
+2026-06-01 21:50:00 | INFO |   MonthlyCharges: mean=-0.0000, std=1.0001
+2026-06-01 21:50:00 | INFO |   TotalCharges: mean=0.0000, std=1.0001
+2026-06-01 21:50:00 | INFO |   AvgMonthlyCharge: mean=-0.0000, std=1.0001
+2026-06-01 21:50:00 | INFO |   NumServices: mean=-0.0000, std=1.0001
+2026-06-01 21:50:00 | INFO |   Scaling selesai pada 5 kolom numerik.
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO | TAHAP 8 — MENYIMPAN DATASET
+2026-06-01 21:50:00 | INFO | ============================================================
+2026-06-01 21:50:00 | INFO |   Dataset disimpan ke : telco_churn_preprocessed.csv
+2026-06-01 21:50:00 | INFO |   Shape final         : (7043, 37)
+2026-06-01 21:50:00 | INFO |   Jumlah fitur        : 36  (+ 1 target 'Churn')
+2026-06-01 21:50:00 | INFO | ************************************************************
+2026-06-01 21:50:00 | INFO |   PIPELINE SELESAI — telco_churn_preprocessed.csv siap digunakan.
+2026-06-01 21:50:00 | INFO | ************************************************************
