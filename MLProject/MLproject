@@ -17,9 +17,5 @@ entry_points:
       test_size:
         type: float
         default: 0.2
-    command: >
-      python modelling.py
-        --data_path {data_path}
-        --n_estimators {n_estimators}
-        --max_depth {max_depth}
-        --test_size {test_size}
+
+    command: "python modelling.py --data_path {data_path} --n_estimators {n_estimators} --max_depth {max_depth} --test_size {test_size}"
