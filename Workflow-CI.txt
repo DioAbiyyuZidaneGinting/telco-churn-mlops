@@ -1,0 +1,16 @@
+Repository GitHub : https://github.com/DioAbiyyuZidaneGinting/telco-churn-mlops
+GitHub Actions    : https://github.com/DioAbiyyuZidaneGinting/telco-churn-mlops/actions
+
+Deskripsi Workflow:
+
+1. preprocessing.yml (Preprocessing Pipeline)
+   - Trigger  : Push ke branch main pada file automate_dio.py atau WA_Fn-UseC_-Telco-Customer-Churn.csv
+   - Fungsi   : Menjalankan automate_dio.py secara otomatis di GitHub Actions
+   - Output   : telco_churn_preprocessed.csv di-commit kembali ke repo
+   - Steps    : Checkout -> Setup Python 3.12 -> Install deps -> Run automate_dio.py -> Verify output -> Commit & push
+
+2. ci.yml (CI - MLflow Training & Docker Push)
+   - Trigger  : Push ke branch main pada MLProject/ atau modelling.py
+   - Fungsi   : Menjalankan MLflow Project training -> build & push Docker image ke Docker Hub
+   - Docker   : https://hub.docker.com/r/DioAbiyyuZidaneGinting/telco-churn-mlflow
+   - Steps    : Checkout -> Setup Python 3.12 -> Install deps -> mlflow run MLProject/ -> Upload artifacts -> Docker build -> Docker push

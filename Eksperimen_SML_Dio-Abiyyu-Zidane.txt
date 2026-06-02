@@ -1,0 +1,13 @@
+Repository GitHub   : https://github.com/DioAbiyyuZidaneGinting/telco-churn-mlops
+Repository DagsHub  : https://dagshub.com/DioAbiyyuZidaneGinting/telco-churn-mlops
+MLflow Tracking URI : https://dagshub.com/DioAbiyyuZidaneGinting/telco-churn-mlops.mlflow
+
+Deskripsi Eksperimen:
+- Dataset          : Telco Customer Churn (WA_Fn-UseC_-Telco-Customer-Churn.csv)
+- Model            : Random Forest Classifier (sklearn)
+- Experiment Name  : telco-churn-rf-mlproject
+- Preprocessing    : automate_dio.py (pipeline otomatis 8 tahap)
+- Training Script  : MLProject/modelling.py (via mlflow run)
+- Tuning Script    : modelling_tuning.py (GridSearchCV)
+- Metrics Terbaik  : Accuracy ~0.80, AUC-ROC ~0.85, F1-Score ~0.60
+- MLflow Artifacts : confusion_matrix.png, feature_importance.png, roc_curve.png
