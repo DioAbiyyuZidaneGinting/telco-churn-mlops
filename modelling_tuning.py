@@ -2,17 +2,6 @@
 modelling_tuning.py
 ===================
 Random Forest + GridSearchCV + MLflow (DagsHub-compatible)
-
-Setup DagsHub sebelum menjalankan:
-1. Daftar di https://dagshub.com
-2. Buat repo baru → Import from GitHub
-3. Buka Settings → Integrations → MLflow
-4. Salin Tracking URI, username, dan token
-5. Set environment variables:
-     export MLFLOW_TRACKING_URI=https://dagshub.com/<user>/<repo>.mlflow
-     export MLFLOW_TRACKING_USERNAME=<dagshub_username>
-     export MLFLOW_TRACKING_PASSWORD=<dagshub_token>
-6. Atau isi langsung pada bagian CONFIG di bawah (tidak disarankan untuk produksi)
 """
 
 import os
@@ -56,10 +45,10 @@ RUN_NAME = "rf-gridsearch"
 TEST_SIZE = 0.2
 RANDOM_STATE = 42
 
-# DagsHub — ambil dari env variable (isi via GitHub Secrets / .env)
+
 DAGSHUB_TRACKING_URI = os.getenv(
     "MLFLOW_TRACKING_URI",
-    "https://dagshub.com/<YOUR_USERNAME>/<YOUR_REPO>.mlflow",
+    "https://dagshub.com/DioAbiyyuZidaneGinting/telco-churn-mlops.mlflow",
 )
 
 PARAM_GRID = {
